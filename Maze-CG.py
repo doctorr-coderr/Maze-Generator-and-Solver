@@ -1,3 +1,4 @@
+# initial starting setup for the maze generator.
 import pygame
 
 R = 15
@@ -16,6 +17,7 @@ BLACK = (0, 0, 0)
 RED = (220, 0, 0)
 BLUE = (0, 80, 255)
 GREEN = (0, 180, 0)
+
 # arrays to store the walls and visited status of each cell
 northWall = [[1 for _ in range(C)] for _ in range(R)]
 eastWall = [[1 for _ in range(C)] for _ in range(R)]
