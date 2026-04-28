@@ -22,3 +22,60 @@ GREEN = (0, 180, 0)
 northWall = [[1 for _ in range(C)] for _ in range(R)]
 eastWall = [[1 for _ in range(C)] for _ in range(R)]
 visited = [[False for _ in range(C)] for _ in range(R)]
+
+def draw_maze(path=None, dead_ends=None, current=None):
+    screen.fill(WHITE)
+
+    if path:
+        for r, c in path:
+            pygame.draw.circle(
+                screen, GREEN,
+                (c * CELL + CELL // 2, r * CELL + CELL // 2),
+                5
+            )
+
+    if dead_ends:
+        for r, c in dead_ends:
+            pygame.draw.circle(
+                screen, BLUE,
+                (c * CELL + CELL // 2, r * CELL + CELL // 2),
+                5
+            )
+
+    if current:
+        r, c = current
+        pygame.draw.circle(
+            screen, RED,
+            (c * CELL + CELL // 2, r * CELL + CELL // 2),
+            7
+        )
+
+    for r in range(R):
+        for c in range(C):
+            x = c * CELL
+            y = r * CELL
+
+            if northWall[r][c]:
+                pygame.draw.line(screen, BLACK, (x, y), (x + CELL, y), 2)
+
+            if eastWall[r][c]:
+                pygame.draw.line(screen, BLACK, (x + CELL, y), (x + CELL, y + CELL), 2)
+
+            if c == 0:
+                pygame.draw.line(screen, BLACK, (x, y), (x, y + CELL), 2)
+
+            if r == R - 1:
+                pygame.draw.line(screen, BLACK, (x, y + CELL), (x + CELL, y + CELL), 2)
+
+    # start opening
+    pygame.draw.line(screen, WHITE, (0, CELL // 2), (0, CELL - 3), 4)
+
+    # end opening
+    pygame.draw.line(
+        screen, WHITE,
+        (WIDTH, (R - 1) * CELL + CELL // 2),
+        (WIDTH, R * CELL - 3),
+        4
+    )
+
+    pygame.display.update()
