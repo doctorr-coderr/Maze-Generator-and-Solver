@@ -79,3 +79,20 @@ def draw_maze(path=None, dead_ends=None, current=None):
     )
 
     pygame.display.update()
+
+def get_unvisited_neighbors(r, c):
+    neighbors = []
+
+    if r > 0 and not visited[r - 1][c]:
+        neighbors.append((r - 1, c, "up"))
+
+    if r < R - 1 and not visited[r + 1][c]:
+        neighbors.append((r + 1, c, "down"))
+
+    if c > 0 and not visited[r][c - 1]:
+        neighbors.append((r, c - 1, "left"))
+
+    if c < C - 1 and not visited[r][c + 1]:
+        neighbors.append((r, c + 1, "right"))
+
+    return neighbors
