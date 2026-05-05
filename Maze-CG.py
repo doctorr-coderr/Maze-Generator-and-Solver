@@ -96,3 +96,16 @@ def get_unvisited_neighbors(r, c):
         neighbors.append((r, c + 1, "right"))
 
     return neighbors
+
+def remove_wall(r, c, nr, nc, direction):
+    if direction == "up":
+        northWall[r][c] = 0
+
+    elif direction == "down":
+        northWall[nr][nc] = 0
+
+    elif direction == "left":
+        eastWall[r][nc] = 0
+
+    elif direction == "right":
+        eastWall[r][c] = 0
