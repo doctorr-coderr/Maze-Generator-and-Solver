@@ -142,3 +142,25 @@ def generate_maze():
 
         else:
             break
+
+def can_move(r, c, nr, nc):
+    if nr < 0 or nr >= R or nc < 0 or nc >= C:
+        return False
+
+    # moving up
+    if nr == r - 1 and nc == c:
+        return northWall[r][c] == 0
+
+    # moving down
+    if nr == r + 1 and nc == c:
+        return northWall[nr][nc] == 0
+
+    # moving left
+    if nr == r and nc == c - 1:
+        return eastWall[r][nc] == 0
+
+    # moving right
+    if nr == r and nc == c + 1:
+        return eastWall[r][c] == 0
+
+    return False
