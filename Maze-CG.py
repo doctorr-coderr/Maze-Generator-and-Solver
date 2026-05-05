@@ -109,3 +109,36 @@ def remove_wall(r, c, nr, nc, direction):
 
     elif direction == "right":
         eastWall[r][c] = 0
+
+def generate_maze():
+    stack = []
+
+    r = random.randint(0, R - 1)
+    c = random.randint(0, C - 1)
+    visited[r][c] = True
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        draw_maze(current=(r, c))
+        clock.tick(60)
+
+        neighbors = get_unvisited_neighbors(r, c)
+
+        if neighbors:
+            nr, nc, direction = random.choice(neighbors)
+            stack.append((r, c))
+
+            remove_wall(r, c, nr, nc, direction)
+
+            r, c = nr, nc
+            visited[r][c] = True
+
+        elif stack:
+            r, c = stack.pop()
+
+        else:
+            break
