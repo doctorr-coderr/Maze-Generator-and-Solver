@@ -164,3 +164,49 @@ def can_move(r, c, nr, nc):
         return eastWall[r][c] == 0
 
     return False
+
+def solve_maze():
+    start = (0, 0)
+    end = (R - 1, C - 1)
+
+    stack = [start]
+    visited_solve = set()
+    dead_ends = set()
+
+    while stack:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        current = stack[-1]
+        r, c = current
+        visited_solve.add(current)
+
+        draw_maze(path=stack, dead_ends=dead_ends, current=current)
+        clock.tick(15)
+
+        if current == end:
+            return stack
+
+        directions = [
+            (r - 1, c),
+            (r + 1, c),
+            (r, c - 1),
+            (r, c + 1)
+        ]
+
+        random.shuffle(directions)
+
+        moved = False
+
+        for nr, nc in directions:
+            if (nr, nc) not in visited_solve and can_move(r, c, nr, nc):
+                stack.append((nr, nc))
+                moved = True
+                break
+
+        if not moved:
+            dead_ends.add(stack.pop())
+
+    return None
