@@ -126,7 +126,7 @@ def generate_maze():
                 sys.exit()
 
         draw_maze(current=(r, c))
-        clock.tick(60)
+        clock.tick(15)
 
         neighbors = get_unvisited_neighbors(r, c)
 
@@ -186,7 +186,7 @@ def solve_maze():
         visited_solve.add(current)
 
         draw_maze(path=stack, dead_ends=dead_ends, current=current)
-        clock.tick(15)
+        clock.tick(12)
 
         if current == end:
             return stack
