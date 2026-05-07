@@ -1,4 +1,6 @@
 # initial starting setup for the maze generator.
+import sys
+
 import pygame
 
 R = 15
@@ -210,3 +212,14 @@ def solve_maze():
             dead_ends.add(stack.pop())
 
     return None
+
+generate_maze()
+solution = solve_maze()
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+    draw_maze(path=solution)
