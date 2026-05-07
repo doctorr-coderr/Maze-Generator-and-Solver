@@ -1,6 +1,6 @@
 # initial starting setup for the maze generator.
 import sys
-
+import random
 import pygame
 
 R = 15
