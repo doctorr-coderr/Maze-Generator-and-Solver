@@ -1,3 +1,8 @@
+| Name | ID | Section |
+| :--- | :--- | :--- |
+| Samuek Abraham| ugr/0041/16 | 02 |
+
+
 # Maze Generator and Solver
 
 This project is a visual maze generator and maze solver built using Python and Pygame.
@@ -60,7 +65,3 @@ pip install pygame
 ```bash
 python Maze-CG.py
 ```
-
-## Author
-
-Samuel Abraham
