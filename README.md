@@ -1,6 +1,6 @@
 | Name | ID | Section |
 | :--- | :--- | :--- |
-| Samuek Abraham| ugr/0041/16 | 02 |
+| Samuel Abraham| ugr/0041/16 | 02 |
 
 
 # Maze Generator and Solver
